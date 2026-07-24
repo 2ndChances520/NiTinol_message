@@ -39,3 +39,39 @@ This project is a spiritual and structural analogy:
 ---
 
 ## 📜 The Message
+
+Deformed State (World)          Refining Fire (Grace & Law)         Restored State (Design)
+
+Code snippet
+[ Bent / Distorted ]                    [ Truth ]                    [   Straightened   ]
+```
+
+1. **Bound by Design:** You were not built randomly. The memory of who you are supposed to be is encoded into your structure.
+2. **The Refiner's Heat:** Fire isn't meant to destroy Nitinol; it’s meant to activate its memory. Trial and truth bring alignment.
+3. **Unbreakable Memory:** The world can bend you, but it cannot rewrite the master code written by the Creator.
+
+---
+
+## 🛠️ Usage / Reflection
+
+```bash
+# Clone the repository of mind
+$ git clone [https://github.com/your-username/NiTinol.git](https://github.com/your-username/NiTinol.git)
+
+# Apply the heat of Truth
+$ cd NiTinol && ./align_with_design.sh
+
+# Output:
+# [SUCCESS] Alignment restored. Form corrected.
+```
+
+---
+
+<div align="center">
+
+> *"He restores my soul; He leads me in the paths of righteousness for His name's sake."* — **Psalm 23:3**
+
+---
+
+<sub>Built with purpose. Bound by design.</sub>
+</div>
