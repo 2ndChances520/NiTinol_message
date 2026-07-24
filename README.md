@@ -56,7 +56,7 @@ Code snippet
 
 ```bash
 # Clone the repository of mind
-$ git clone [https://github.com/your-username/NiTinol.git](https://github.com/your-username/NiTinol.git)
+$ git clone [https://github.com/your-username/NiTinol.git](https://github.com/2ndChance520/NiTinol.git)
 
 # Apply the heat of Truth
 $ cd NiTinol && ./align_with_design.sh
