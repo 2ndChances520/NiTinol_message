@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bound by Design: Nitinol, the Laws of Creation, and the Ultimate Restoration</title>
+    <style>
+        /* GLOBAL STYLES */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1a33;
+            color: #e0e6ed;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            line-height: 1.6;
+        }
+
+        .article-container {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #0a1f44;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            color: #4db8ff;
+            margin-top: 10px;
+            border-bottom: 2px solid #1a3a6c;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #4db8ff;
+            margin-top: 2em;
+            border-bottom: 1px solid #1a3a6c;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #4db8ff;
+            margin-top: 1.5em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        /* SCRIPTURE & QUOTE BOXES */
+        .scripture-box, .quote-box, .definition-box {
+            background-color: #082952;
+            border-left: 4px solid #4db8ff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .scripture-box { font-style: italic; color: #b3d9ff; }
+        .scripture-title { font-weight: bold; color: #4db8ff; display: block; margin-bottom: 15px; font-style: normal; font-size: 1.2em;}
+        .scripture-box p { margin-bottom: 10px; }
+        .verse-num { font-weight: bold; color: #4db8ff; margin-right: 5px; }
+        
+        .quote-box { color: #a9c2db; font-size: 1.15em; font-style: italic; }
+        .quote-author { display: block; text-align: right; font-weight: bold; margin-top: 10px; color: #4db8ff; font-style: normal; }
+
+        /* BUTTONS */
+        .video-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background-color: #4db8ff;
+            color: #0a1f44;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 15px 0;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .video-btn:hover {
+            background-color: #2a9df4;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .video-note {
+            display: inline-block;
+            margin-left: 15px;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        ul { font-size: 1.1em; margin-bottom: 20px; }
+        li { margin-bottom: 10px; }
+        .highlight { color: #ff6b6b; font-weight: bold; }
+
+        /* =========================================
+           TIMELINE WIDGET STYLES 
+           ========================================= */
+        .timeline-widget {
+            background-color: #061530;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            display: grid;
+            grid-template-areas:
+                "header header kjv-tag"
+                "detail-box diagram diagram"
+                "timeline-slider timeline-slider timeline-slider";
+            grid-template-columns: 280px 1fr 50px;
+            gap: 15px;
+            margin: 30px 0 40px 0;
+            border: 1px solid #1a3a6c;
+        }
+
+        .tw-header {
+            grid-area: header;
+            color: #4db8ff;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .tw-header svg {
+            margin-right: 10px;
+        }
+
+        .tw-kjv-tag {
+            grid-area: kjv-tag;
+            color: #4db8ff;
+            font-size: 0.8em;
+            text-align: center;
+            border: 1px solid #4db8ff;
+            padding: 2px 5px;
+            border-radius: 5px;
+            height: fit-content;
+            align-self: center;
+            font-weight: bold;
+        }
+
+        #detail-box {
+            grid-area: detail-box;
+            background-color: #0a1f44;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #1a3a6c;
+        }
+
+        #detail-box h3 { margin-top: 0; font-size: 1.1em; margin-bottom: 10px; }
+        #detail-box p { font-size: 0.95em; margin-bottom: 8px; line-height: 1.4; }
+
+        #timeline-diagram {
+            grid-area: diagram;
+            height: 250px;
+            background: linear-gradient(to right, #001f3f, #000);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #1a3a6c;
+        }
+
+        #timeline-diagram svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .slider-container {
+            grid-area: timeline-slider;
+            text-align: center;
+            padding-top: 15px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+            accent-color: #4db8ff;
+        }
+
+        .range-labels {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            color: #4db8ff;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .timeline-pointer {
+            position: absolute;
+            bottom: 10px;
+            color: #4db8ff;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            font-size: 0.85em;
+        }
+
+        .pointer-line {
+            height: 40px;
+            width: 2px;
+            background-color: rgba(77, 184, 255, 0.6);
+            margin-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-widget {
+                grid-template-areas:
+                    "header kjv-tag"
+                    "diagram diagram"
+                    "detail-box detail-box"
+                    "timeline-slider timeline-slider";
+                grid-template-columns: 1fr auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="article-container">
+
+    <p>I'd like to start with a couple of quotes from an unbeliever...</p>
+
+    <div class="quote-box">
+        “One of the saddest lessons of history is this: If we’ve been bamboozled long enough, we tend to reject any evidence of the bamboozle. We’re no longer interested in finding out the truth. The bamboozle has captured us. It’s simply too painful to acknowledge, even to ourselves, that we’ve been taken. Once you give a charlatan power over you, you almost never get it back.”
+        <span class="quote-author">― Carl Sagan</span>
+    </div>
+
+    <div class="quote-box">
+        “The nitrogen in our DNA, the calcium in our teeth, the iron in our blood, the carbon in our apple pies were made in the interiors of collapsing stars. We are made of starstuff.”
+        <span class="quote-author">― Carl Sagan</span>
+    </div>
+
+    <h1>Bound by Design: Nitinol, the Laws of Creation, and the Ultimate Restoration</h1>
+
+    <!-- TOP INTERACTIVE TIMELINE WIDGET -->
+    <div class="timeline-widget">
+        <div class="tw-header">
+            <svg width="30" height="30" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="#4db8ff"/>
+                <text x="50" y="55" font-family="Arial" font-size="30" fill="#061530" text-anchor="middle" dominant-baseline="middle">TL</text>
+            </svg> 
+            TeamLegacy Cosmic Timeline
+        </div>
+        <div class="tw-kjv-tag">KJV</div>
+        
+        <div id="detail-box">
+            <h3>INFO</h3>
+            <p><strong>TIME:</strong> <span id="info-time">10⁻⁴³ sec</span></p>
+            <p><strong>EPOCH:</strong> <span id="info-epoch">Planck Epoch</span></p>
+            <p><strong>DESCRIPTION:</strong> <span id="info-description">The very beginning of the universe.</span></p>
+            <h3 style="margin-top:15px; color:#b3d9ff;">KJV VERSE</h3>
+            <p id="info-kjv" style="font-style: italic; color: #4db8ff;">"In the beginning God created the heaven and the earth." - Genesis 1:1</p>
+        </div>
+
+        <div id="timeline-diagram">
+            <svg id="timeline-svg" viewBox="0 0 700 250">
+                <!-- SVG dynamically injected here -->
+            </svg>
+            <div class="timeline-pointer" style="left: 5%;">
+                <div class="pointer-line"></div>
+                ALPHA
+            </div>
+            <div class="timeline-pointer" style="right: 5%;">
+                <div class="pointer-line"></div>
+                OMEGA
+            </div>
+        </div>
+
+        <div class="slider-container">
+            <input type="range" id="epochSlider" min="0" max="8" value="0">
+            <div class="range-labels">
+                <span>ALPHA (Planck Epoch)</span>
+                <span>OMEGA (Final Collapse)</span>
+            </div>
+        </div>
+    </div>
+    <!-- END TIMELINE WIDGET -->
+
+    <!-- PART 1 -->
+    <h2>Part 1: The Foundation – God’s Blueprint (Genesis 1)</h2>
+    <p><strong>The Concept:</strong> Before man ever formed a metal, God formed the rules.</p>
+
+    <p>An unbeliever can even see part of the Truth:</p>
+    <a href="https://www.youtube.com/watch?v=tLPkpBN6bEI" target="_blank" class="video-btn">▶ Watch: Truth in Science</a>
+    <span class="video-note">==== STOP AT :50 seconds.</span>
+
+    <div class="scripture-box">
+        <span class="scripture-title">Genesis 1:1-28 (King James Version (1769) with Strongs Numbers and Morphology)</span>
+        
+        <p><span class="verse-num">1</span> In the beginning God created the heaven and the earth. <span class="verse-num">2</span> And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters. <span class="verse-num">3</span> And God said, Let there be light: and there was light. <span class="verse-num">4</span> And God saw the light, that it was good: and God divided the light from the darkness. <span class="verse-num">5</span> And God called the light Day, and the darkness he called Night. And the evening and the morning were the first day.</p>
+
+        <p><span class="verse-num">6</span> And God said, Let there be a firmament in the midst of the waters, and let it divide the waters from the waters. <span class="verse-num">7</span> And God made the firmament, and divided the waters which were under the firmament from the waters which were above the firmament: and it was so. <span class="verse-num">8</span> And God called the firmament Heaven. And the evening and the morning were the second day. <span class="verse-num">9</span> And God said, Let the waters under the heaven be gathered together unto one place, and let the dry land appear: and it was so. <span class="verse-num">10</span> And God called the dry land Earth; and the gathering together of the waters called he Seas: and God saw that it was good.</p>
+
+        <p><span class="verse-num">11</span> And God said, Let the earth bring forth grass, the herb yielding seed, and the fruit tree yielding fruit after his kind, whose seed is in itself, upon the earth: and it was so. <span class="verse-num">12</span> And the earth brought forth grass, and herb yielding seed after his kind, and the tree yielding fruit, whose seed was in itself, after his kind: and God saw that it was good. <span class="verse-num">13</span> And the evening and the morning were the third day. <span class="verse-num">14</span> And God said, Let there be lights in the firmament of the heaven to divide the day from the night; and let them be for signs, and for seasons, and for days, and years: <span class="verse-num">15</span> And let them be for lights in the firmament of the heaven to give light upon the earth: and it was so.</p>
+
+        <p><span class="verse-num">16</span> And God made two great lights; the greater light to rule the day, and the lesser light to rule the night: he made the stars also. <span class="verse-num">17</span> And God set them in the firmament of the heaven to give light upon the earth, <span class="verse-num">18</span> And to rule over the day and over the night, and to divide the light from the darkness: and God saw that it was good. <span class="verse-num">19</span> And the evening and the morning were the fourth day. <span class="verse-num">20</span> And God said, Let the waters bring forth abundantly the moving creature that hath life, and fowl that may fly above the earth in the open firmament of heaven.</p>
+
+        <p><span class="verse-num">21</span> And God created great whales, and every living creature that moveth, which the waters brought forth abundantly, after their kind, and every winged fowl after his kind: and God saw that it was good. <span class="verse-num">22</span> And God blessed them, saying, Be fruitful, and multiply, and fill the waters in the seas, and let fowl multiply in the earth. <span class="verse-num">23</span> And the evening and the morning were the fifth day. <span class="verse-num">24</span> And God said, Let the earth bring forth the living creature after his kind, cattle, and creeping thing, and beast of the earth after his kind: and it was so. <span class="verse-num">25</span> And God made the beast of the earth after his kind, and cattle after their kind, and every thing that creepeth upon the earth after his kind: and God saw that it was good.</p>
+
+        <p><span class="verse-num">26</span> And God said, Let us make man in our image, after our likeness: and let them have dominion over the fish of the sea, and over the fowl of the air, and over the cattle, and over all the earth, and over every creeping thing that creepeth upon the earth. <span class="verse-num">27</span> So God created man in his own image, in the image of God created he him; male and female created he them. <span class="verse-num">28</span> And God blessed them, and God said unto them, Be fruitful, and multiply, and replenish the earth, and subdue it: and have dominion over the fish of the sea, and over the fowl of the air, and over every living thing that moveth upon the earth.</p>
+    </div>
+
+    <p><strong>Narrative:</strong> I'll start by emphasizing that when God created the universe, He didn't just throw things together randomly. He created the elements—Nickel, Titanium, protons, electrons, and neutrons—and He bound them by absolute laws. They have no choice but to obey His physical laws. Put this in your frontal lobe.</p>
+
+    <p>God created Satan, initially as a perfect and blameless angelic being, though the Bible does not provide a single verse explicitly stating "God created Satan"; rather, this is derived from theological inferences and specific passages describing his origins and fall. Key scriptures include:</p>
+
+    <ul>
+        <li><strong>Colossians 1:16 and John 1:3:</strong> Establish that God (through Jesus Christ) created all things, including "thrones or dominions or principalities or powers," which encompasses all angelic beings, including Satan.</li>
+        <li><strong>Ezekiel 28:13–15:</strong> Describes Satan (symbolized by the king of Tyre) as being created on the holy mountain of God, created blameless in his ways from the day he was created until wickedness was found in him.</li>
+        <li><strong>Ezekiel 28:14:</strong> Identifies him as a cherub who was anointed as a guardian cherub, placing him in a high position within God’s heavenly host.</li>
+        <li><strong>Isaiah 14:12:</strong> Refers to him as "Lucifer, son of the dawn" (morning star), indicating his original glorious state before his fall from heaven.</li>
+        <li><strong>Job 38:7:</strong> Notes that the "sons of God" (angels) shouted for joy when God laid the earth’s foundations, implying the existence of angels, including Satan, during the creation week.</li>
+    </ul>
+
+    <p>While God created the being who became Satan, scripture clarifies that God did not create sin or evil within him; rather, Satan chose to rebel due to pride (Ezekiel 28:17), transforming from a good creation into the adversary. <em>FREE WILL?</em></p>
+
+    <p>I would like to introduce the Atom:</p>
+    <a href="https://www.youtube.com/shorts/o7-iCnqKJj8" target="_blank" class="video-btn">▶ Watch: Introduction to the Atom</a>
+
+    <div class="definition-box">
+        <p>And the <strong>Atomic Ratio:</strong> The atomic ratio formula calculates the relative proportion of atoms of one element to another in a compound or mixture. It is defined mathematically as:</p>
+        <p style="text-align:center; font-family: monospace; font-size: 1.2em; color:#4db8ff;">Atomic Ratio (i:j) = Atomic Percent (i) : Atomic Percent (j)</p>
+    </div>
+
+    <p>Explain that the universe is built on a perfect, mathematical ratio authored by the Creator.</p>
+
+    <p>Nitinol (Nickel Titanium) is defined by an equiatomic composition, meaning it contains a nearly equal number of nickel and titanium atoms, typically 50% of each element by atomic percentage (a 1:1 atomic ratio).</p>
+    
+    <p>While the atomic ratio is balanced, the weight percentage differs due to atomic mass:</p>
+    <ul>
+        <li><strong>Atomic Percent:</strong> ~50% Nickel, ~50% Titanium.</li>
+        <li><strong>Weight Percent:</strong> Approximately 55% Nickel and 45% Titanium.</li>
+    </ul>
+    <p>Precise control of this stoichiometric balance is critical; a deviation of just one atomic percent can shift the alloy’s transformation temperature by up to 100 degrees Celsius.</p>
+
+    <!-- PART 2 -->
+    <h2>Part 2: The Forces at Play – The Alpha & Omega</h2>
+    <p><strong>The Concept:</strong> How does God hold the universe together, and where does decay come from?</p>
+
+    <div class="scripture-box">
+        <span class="scripture-title">Colossians 1:17-20</span>
+        17 And he is before all things, and by him all things consist. 18 And he is the head of the body, the church: who is the beginning, the firstborn from the dead; that in all things he might have the preeminence. 19 For it pleased the Father that in him should all fulness dwell; 20 And, having made peace through the blood of his cross, by him to reconcile all things unto himself; by him, I say, whether they be things in earth, or things in heaven.
+    </div>
+
+    <div class="scripture-box">
+        <span class="scripture-title">Ephesians 2:2-10</span>
+        2 Wherein in time past ye walked according to the course of this world, according to the prince of the power of the air, the spirit that now worketh in the children of disobedience: 3 Among whom also we all had our conversation in times past in the lusts of our flesh, fulfilling the desires of the flesh and of the mind; and were by nature the children of wrath, even as others. 4 But God, who is rich in mercy, for his great love wherewith he loved us, 5 Even when we were dead in sins, hath quickened us together with Christ, (by grace ye are saved;) 6 And hath raised us up together, and made us sit together in heavenly places in Christ Jesus: 7 That in the ages to come he might shew the exceeding riches of his grace in his kindness toward us through Christ Jesus. 8 For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: 9 Not of works, lest any man should boast. 10 For we are his workmanship, created in Christ Jesus unto good works, which God hath before ordained that we should walk in them.
+    </div>
+
+    <p><strong>Narrative:</strong> I would like to give you MY observation about the four fundamental forces of the universe.</p>
+    <p>Scientists suspect these forces were originally "One" at the beginning of time—pointing us straight to Christ, the Alpha and Omega!</p>
+
+    <a href="https://www.youtube.com/watch?v=Yv3EMq2Dgq8" target="_blank" class="video-btn">▶ Watch: The 4 Fundamental Forces</a>
+
+    <ul>
+        <li><strong>The Strong Force:</strong> This is the force that binds the nucleus of the atom together. It perfectly mirrors the sustaining power of God. It is the ultimate bond.</li>
+        <li><strong>The Weak Force & Radioactive Decay:</strong> I would like to point out the profound spiritual parallel here. The "weak force" is responsible for decay. Compare this to Isaiah 14:12-14 (the fall of the son of the morning) and Ephesians 2:2. Just as the prince of the power of the air brought spiritual decay (sin) into the world, the weak force brings physical decay.</li>
+    </ul>
+
+    <div class="definition-box">
+        <p><em>(Side Note for the audience: briefly mention Dark Matter here, referencing Colossians 1:13-17)</em></p>
+        <p>13 Who hath delivered us from the power of darkness, and hath translated us into the kingdom of his dear Son: 14 In whom we have redemption through his blood, even the forgiveness of sins: 15 Who is the image of the invisible God, the firstborn of every creature: 16 For by him were all things created, that are in heaven, and that are in earth, visible and invisible, whether they be thrones, or dominions, or principalities, or powers: all things were created by him, and for him: 17 And he is before all things, and by him all things consist.</p>
+        <p><em>...tying the physical mysteries of the cosmos to the "domain of darkness" that Christ rescues us from.</em></p>
+    </div>
+
+    <!-- PART 3 -->
+    <h2>Part 3: The Discovery – Uncovering God’s Hidden Laws</h2>
+    <p><strong>The Concept:</strong> I believe man doesn't invent; man merely discovers what God has already set in motion.</p>
+
+    <p><strong>Narrative:</strong> I'd like to transition to 1958. I want to tell you the story of the Naval Ordnance Laboratory.</p>
+
+    <p>Back in 58, a metallurgist at the Naval Ordnance Laboratory (NOL) was tasked with the goal of developing metallic materials for the nose cone of the U.S. Navy Polaris reentry vehicle! In-house project. In 59 Buehler observed the extraordinary but still undiscovered, property of Nitinol. It has an acoustic damping at different temps, warm bars rang like bells, and cold bars thud like lead. Following the damping discovery, other seemingly related unique changes were observed.</p>
+
+    <p>In 1960 Buehler prepared a long thin strip of Nitinol to use in demonstrations of the materials fatigue-resistant properties. During the presentation, it was passed around the conference table. One of the Associate Technical Directors, Dr. David S. Muzzy, who was a pipe smoker, applied heat from a lighter and to everyone's amazement, the Nitinol stretched out longitudinally............. later in the 60s the first Polaris missile was launched on a nuke powered sub.</p>
+
+    <p><strong>The Acoustic Damping:</strong> In 1959, Buehler discovers something strange. God’s law is at work in this metal in a unique way. When the metal is warm, it rings like a beautiful bell. When it is cold, it thuds like dead lead. <em>(Spiritual parallel: When we are warm with the Spirit, we ring true; when we grow cold, we are spiritually deadened)</em>.</p>
+
+    <!-- PART 4 -->
+    <h2>Part 4: The Conclusion – Formed in His Image</h2>
+    <p><strong>The Concept:</strong> The Shape Memory Effect points directly to Christ Jesus and our redemption.</p>
+
+    <div class="scripture-box">
+        <span class="scripture-title">Genesis 1:26</span>
+        "Let Us make man in Our image, according to Our likeness..."
+    </div>
+
+    <p><strong>Narrative:</strong> I want to bring the message home to Christ. Let me explain that scientists call this the "Shape Memory Effect." The metal remembers the shape it was forged in. It cannot help it; under the right conditions, it must obey the physical law God placed inside its atomic structure.</p>
+
+    <div class="quote-box">
+        "The beauty of a living thing is not the atoms that go into it but the way the atoms are put together. The cosmos is also within us. We're made of star stuff, we are a way for the cosmos to know itself"
+        <span class="quote-author">― Carl Sagan</span>
+    </div>
+
+    <p>The phrase "I have designed you in your mother's womb" is a paraphrase of Psalm 139:13 and Jeremiah 1:5, which affirm God's intimate role in human formation before birth.</p>
+
+    <div class="scripture-box">
+        <span class="scripture-title">Psalm 139:13 states:</span>
+        13 For thou hast possessed my reins: thou hast covered me in my mother's womb.<br>
+        <small>(not KJV: "For you created my inmost being; you knit me together in my mother’s womb.")</small>
+    </div>
+
+    <p>This verse emphasizes that God actively formed a person's inner parts and woven their physical body together during gestation.</p>
+
+    <div class="scripture-box">
+        <span class="scripture-title">Jeremiah 1:5 adds the dimension of divine foreknowledge and purpose:</span>
+        Before I formed thee in the belly I knew thee; and before thou camest forth out of the womb I sanctified thee, and I ordained thee a prophet unto the nations.<br>
+        <small>(not KJV: "Before I formed you in the womb I knew you, and before you were born I set you apart and appointed you as a prophet to the nations.")</small>
+    </div>
+
+    <p>This passage highlights that God's knowledge and plan for an individual existed prior to their physical formation. These scriptures are commonly interpreted to support the belief that human life begins at conception and that every individual is intentionally created and known by God before birth.</p>
+
+    <h3>The Call to Action:</h3>
+    <p>Like Nitinol, we were forged in a specific shape: The image of God (Gen 1:26).</p>
+    <p>Life, the world, and the "weak force" of sin (decay) bends us, twists us, and leaves us unrecognizable from our original design. We look ruined.</p>
+    
+    <p class="highlight" style="font-size: 1.2em;">I'd like to take some time here to say, God DIDNT DO IT!!!!!!!!!!</p>
+
+    <p>I'd like to tell you a little story. There once was a husband and a wife and three children. Two girls and one boy. The husband and wife had musical talent to praise God, to much fanfare.</p>
+    <p>They also had elegant speech and preached to large crowds all while the 3 children were watching. But behind closed doors, the husband was not good to the children. In the future two of the kids turned away from God, but one remained loyal to Christ.</p>
+    <p>God did not do any of those things to you or them!, tho the one that professed to God did, through Sin, which God never knew.</p>
+
+    <p>God’s law of redemption is waiting. When the Refiner's Fire, the presence of Christ Jesus and the Holy Spirit is applied to our lives, a miraculous reaction takes place.</p>
+    <p><strong>We are compelled by God's spiritual law to snap back into our original design. We are restored into the image of Christ.</strong></p>
+
+    <p><em>How many more things of God's design don't you know.......yet?</em></p>
+
+    <div class="scripture-box" style="text-align: center; font-size: 1.2em;">
+        "I can do ALL THINGS through Christ who strengthens me..." <br>
+        <span style="font-size: 0.8em; font-style: normal; display: block; margin-top: 10px; color: #4db8ff;">- James s.</span>
+    </div>
+
+</div>
+
+<!-- TIMELINE SCRIPT -->
+<script>
+    const timelineData = [
+        { time: "10⁻⁴³ sec", epoch: "Planck Epoch", description: "The very beginning of the universe.", kjv: "\"In the beginning God created the heaven and the earth.\" - Genesis 1:1", graphic: "planck" },
+        { time: "10⁻³² sec", epoch: "Inflationary Epoch", description: "Rapid space expansion.", kjv: "\"He stretcheth out the north over the empty place, and hangeth the earth upon nothing.\" - Job 26:7", graphic: "inflation" },
+        { time: "seconds", epoch: "Nucleosynthesis", description: "First nuclei form.", kjv: "\"Through faith we understand that the worlds were framed by the word of God, so that things which are seen were not made of things which do appear.\" - Hebrews 11:3", graphic: "nucleo" },
+        { time: "380k years", epoch: "Recombination", description: "First light forms.", kjv: "\"And God said, Let there be light: and there was light.\" - Genesis 1:3", graphic: "light" },
+        { time: "300m years", epoch: "Galaxy Formation", description: "Gravity forms clusters.", kjv: "\"He telleth the number of the stars; he calleth them all by their names.\" - Psalm 147:4", graphic: "galaxy" },
+        { time: "Today", epoch: "Expansion Continues", description: "Universe expands.", kjv: "\"Behold, I shew you a mystery; We shall not all sleep, but we shall all be changed,\" - 1 Corinthians 15:51", graphic: "today" },
+        { time: "10¹⁵ years", epoch: "Age of Black Holes", description: "Stellar death and isolation.", kjv: "\"For the day of the LORD is near upon all the heathen...\" - Obadiah 1:15", graphic: "blackholes" },
+        { time: "10⁴⁰ years", epoch: "Proton Decay", description: "Matter breaks down.", kjv: "\"Lift up your eyes to the heavens, and look upon the earth beneath: for the heavens shall vanish away like smoke, and the earth shall wax old like a garment...\" - Isaiah 51:6", graphic: "decay" },
+        { time: "Future", epoch: "Final Collapse / Big Crunch", description: "The ultimate end.", kjv: "\"But the day of the Lord will come as a thief in the night; in the which the heavens shall pass away with a great noise, and the elements shall melt with fervent heat...\" - 2 Peter 3:10", graphic: "omega" }
+    ];
+
+    const slider = document.getElementById('epochSlider');
+    const infoTime = document.getElementById('info-time');
+    const infoEpoch = document.getElementById('info-epoch');
+    const infoDescription = document.getElementById('info-description');
+    const infoKjv = document.getElementById('info-kjv');
+    const svgElement = document.getElementById('timeline-svg');
+
+    function updateContent(index) {
+        const current = timelineData[index];
+        infoTime.textContent = current.time;
+        infoEpoch.textContent = current.epoch;
+        infoDescription.textContent = current.description;
+        infoKjv.textContent = current.kjv;
+        
+        // Clean up svg
+        svgElement.innerHTML = ''; 
+
+        // Dynamic graphics rendering for each epoch
+        if (current.graphic === "planck") {
+            svgElement.innerHTML = '<circle cx="50" cy="125" r="40" fill="#00ffff" opacity="0.3"/><circle cx="50" cy="125" r="20" fill="#00ffff" />';
+        } else if (current.graphic === "inflation") {
+            svgElement.innerHTML = '<circle cx="100" cy="125" r="100" fill="#00ffff" opacity="0.1"/><circle cx="100" cy="125" r="30" fill="#00ffff" />';
+        } else if (current.graphic === "nucleo") {
+             svgElement.innerHTML = '<circle cx="150" cy="125" r="120" fill="#4db8ff" opacity="0.1"/>' +
+                                  '<circle cx="150" cy="115" r="5" fill="#fcf"/>' +
+                                  '<circle cx="145" cy="135" r="5" fill="#cff"/>' +
+                                  '<circle cx="160" cy="128" r="5" fill="#ffc"/>';
+        } else if (current.graphic === "light") {
+             svgElement.innerHTML = '<circle cx="200" cy="125" r="140" fill="#ffffcc" opacity="0.1"/>' +
+                                  '<circle cx="200" cy="125" r="15" fill="#ffffcc"/>';
+        } else if (current.graphic === "galaxy") {
+            svgElement.innerHTML = '<circle cx="250" cy="125" r="150" fill="#ffffff" opacity="0.05"/>' +
+                                 '<circle cx="240" cy="110" r="10" fill="#ccc"/><circle cx="260" cy="140" r="8" fill="#ddd"/><circle cx="270" cy="100" r="12" fill="#aaa"/>';
+        } else if (current.graphic === "today") {
+             svgElement.innerHTML = '<circle cx="350" cy="125" r="150" fill="#ffffff" opacity="0.05"/>' +
+                                  '<circle cx="330" cy="115" r="10" fill="#ccf"/><circle cx="370" cy="145" r="10" fill="#fcf"/><circle cx="390" cy="95" r="10" fill="#ffc"/>';
+        } else if (current.graphic === "blackholes") {
+             svgElement.innerHTML = '<circle cx="450" cy="125" r="150" fill="#000000"/>' +
+                                  '<circle cx="450" cy="125" r="10" fill="#ff0000" />';
+        } else if (current.graphic === "decay") {
+            svgElement.innerHTML = '<circle cx="550" cy="125" r="150" fill="#ffffff" opacity="0.01"/>' +
+                                 '<circle cx="550" cy="125" r="2" fill="#ccc" opacity="0.5"/>';
+        } else if (current.graphic === "omega") {
+             svgElement.innerHTML = '<circle cx="650" cy="125" r="20" fill="#ff0000" />';
+        }
+    }
+
+    slider.addEventListener('input', () => {
+        updateContent(slider.value);
+    });
+
+    // Initialize initial state
+    updateContent(slider.value);
+</script>
+</body>
+</html>
