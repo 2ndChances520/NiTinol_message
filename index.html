@@ -297,6 +297,11 @@
     <p>Here is a video tour of the Creation, that summarizes Gen 1:1-28 so don't worry:</p>
     <a href="https://youtu.be/lghwcMUYLTg?si=-YJmWxtidee3cNAf" target="_blank" class="video-btn">▶ Watch: Epic Video</a>
     
+    <br>
+    
+    <!-- NEW AUDIO BUTTON ADDED HERE -->
+    <a href="javascript:void(0);" onclick="playStanAudio()" class="video-btn" id="stanBtn">🔊 Read by the Stan Underhill</a>
+    <audio id="stanAudio" src="https://raw.githubusercontent.com/2ndChances520/NiTinol_message/main/StanUnderhill_GEN1-28.m4a"></audio>
 
     <div class="scripture-box">
         <span class="scripture-title">Genesis 1:1-28 (King James Version (1769) with Strongs Numbers and Morphology)</span>
@@ -451,7 +456,7 @@
 
 </div>
 
-<!-- TIMELINE SCRIPT -->
+<!-- TIMELINE & AUDIO SCRIPT -->
 <script>
     const timelineData = [
         { time: "10⁻⁴³ sec", epoch: "Planck Epoch", description: "The very beginning of the universe.", kjv: "\"In the beginning God created the heaven and the earth.\" - Genesis 1:1", graphic: "planck" },
@@ -518,6 +523,27 @@
 
     // Initialize initial state
     updateContent(slider.value);
+
+    // Audio Player Logic
+    function playStanAudio() {
+        const audio = document.getElementById("stanAudio");
+        const btn = document.getElementById("stanBtn");
+        if (audio.paused) {
+            audio.play();
+            btn.innerHTML = "⏸ Pause Audio";
+        } else {
+            audio.pause();
+            btn.innerHTML = "🔊 Read by the Stan Underhill";
+        }
+    }
+
+    // Reset button text when audio finishes playing
+    const audioElem = document.getElementById("stanAudio");
+    if (audioElem) {
+        audioElem.addEventListener('ended', () => {
+            document.getElementById("stanBtn").innerHTML = "🔊 Read by the Stan Underhill";
+        });
+    }
 </script>
 </body>
 </html>
